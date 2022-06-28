@@ -1,7 +1,9 @@
 package com.raisetech.lecture0702;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,5 +59,25 @@ public class CityRestController {
               .toUri();
     
     return ResponseEntity.created(url).body("city registered.");
+  }
+
+  @PatchMapping("/city/{cityName}")
+  public ResponseEntity<Map<String, List<String>>> editCity(@PathVariable("cityName") String cityName,
+                                                            @RequestBody @Validated CityUpdateForm form,
+                                                            BindingResult result) {
+    // バリデーション違反の処理
+    if (result.hasErrors()) {
+      return new ResponseEntity<>(Map.of("Message", List.of("Invalid value.")), HttpStatus.BAD_REQUEST);
+    }
+    List<String> editData = new ArrayList<>();
+
+    // ハリボテ処理
+    // 変更後の都市情報をすべてリストで表示するような想定
+    editData.add(form.getCityName());
+    editData.add(form.getCityDescription());
+    editData.add(form.getCityPopulation());
+    editData.add(form.getCityIndustrie());
+
+    return ResponseEntity.ok(Map.of("Message", editData));
   }
 }
