@@ -43,4 +43,27 @@ public class CityService {
 
     return cityData;
   }
+
+  //==========
+  // POST 用
+  //==========
+  public String newCityName(String name) {
+    // データベースへ要素を登録する仮実装
+    return name;
+  }
+
+  public String newCityDescription(String description) {
+    // データベースへ要素を登録する仮実装
+    return description;
+  }
+
+  public String newCityPopulation(String population) {
+    // データベースへ要素を登録する仮実装
+    return population;
+  }
+
+  public String newCityIndustrie(String industrie) {
+    // データベースへ要素を登録する仮実装
+    return industrie;
+  }
 }
