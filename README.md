@@ -36,9 +36,9 @@ urayasu, atsugi, 以外は「指定なし」となる。
 
 ![存在しない都市](img/gethtml02.png)
 
-### GET(JSON) [/city/data]
+### GET(JSON) [/city]
 
-- アクセス先: `/city/data`
+- アクセス先: `/city`
 - パラメータ変数: `name`
 
 同様に浦安市か厚木市の情報をJSONで取得できる。
