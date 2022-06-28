@@ -27,7 +27,7 @@ public class CityController {
 
   // 今回の GET ではバリデーションしない
   // 登録された市だけ動作し、それ以外の文字列はすべて「登録なし」のデータを返す
-  @GetMapping("/city")
+  @GetMapping("/citysite")
   public String getCity(@RequestParam(defaultValue = "none") String name, Model model) {
     List<String> information = cityService.cityInfo(name);
 
