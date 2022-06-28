@@ -66,4 +66,21 @@ public class CityService {
     // データベースへ要素を登録する仮実装
     return industrie;
   }
+
+  //==========
+  // DELETE
+  //==========
+  public boolean isExistCity(String name) {
+    switch (name) {
+      case "urayasu" -> {
+        return true;
+      }
+      case "atsugi" -> {
+        return true;
+      }
+      default -> {
+        return false;
+      }
+    }
+  }
 }

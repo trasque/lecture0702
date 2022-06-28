@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -79,5 +80,16 @@ public class CityRestController {
     editData.add(form.getCityIndustrie());
 
     return ResponseEntity.ok(Map.of("Message", editData));
+  }
+
+  @DeleteMapping("/city/{cityName}")
+  public ResponseEntity<String> eraseCity(@PathVariable("cityName") String cityName) {
+    // 見つかりませんでした処理
+    if (!cityService.isExistCity(cityName)) {
+      return new ResponseEntity<>("City not found.", HttpStatus.NOT_FOUND);
+    }
+
+    // 見つかった場合データベースから削除処理
+    return ResponseEntity.ok("Deleted " + cityName + " city information.");
   }
 }
