@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>CityData</title>
+  </head>
+  <body>
+    <h2><span th:text="${cityName}"></span>の情報</h2>
+    <h2>説明</h2>
+    <p th:text="${cityDescription}"></p>
+    <p>人口：<span th:text="${cityPopulation}"></span></p>
+    <p>産業：<span th:text="${cityIndustrie}"></span></p>
+  </body>
+</html>
